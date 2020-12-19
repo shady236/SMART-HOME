@@ -55,8 +55,6 @@ int main(void)
 			break;
 			
 			default:
-			LED1_TOGGLE();
-			LED2_TOGGLE();
 			break;
 		}
 		cmd = 0;

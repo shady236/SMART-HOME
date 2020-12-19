@@ -11,6 +11,7 @@ int main(void)
 	UART_init();
 	SPI_init();
 	SPI_masterStartTransmission();
+	_delay_ms(1000);
 	uint8 data;
 	
     while(1)

@@ -3,27 +3,27 @@ SMART HOME.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000008ea  00000000  00000000  00000074  2**1
+  0 .text         000008fc  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00800060  000008ea  0000095e  2**0
+  1 .data         00000000  00800060  000008fc  00000970  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .stab         000006cc  00000000  00000000  00000960  2**2
+  2 .stab         000006cc  00000000  00000000  00000970  2**2
                   CONTENTS, READONLY, DEBUGGING
-  3 .stabstr      00000085  00000000  00000000  0000102c  2**0
+  3 .stabstr      00000085  00000000  00000000  0000103c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_aranges 00000140  00000000  00000000  000010b8  2**3
+  4 .debug_aranges 00000140  00000000  00000000  000010c8  2**3
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000dd3  00000000  00000000  000011f8  2**0
+  5 .debug_info   00000e6f  00000000  00000000  00001208  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 0000044e  00000000  00000000  00001fcb  2**0
+  6 .debug_abbrev 000004cb  00000000  00000000  00002077  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000006d6  00000000  00000000  00002419  2**0
+  7 .debug_line   00000817  00000000  00000000  00002542  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000288  00000000  00000000  00002af0  2**2
+  8 .debug_frame  00000288  00000000  00000000  00002d5c  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000305  00000000  00000000  00002d78  2**0
+  9 .debug_str    0000035b  00000000  00000000  00002fe4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    000007d2  00000000  00000000  0000307d  2**0
+ 10 .debug_loc    000007d2  00000000  00000000  0000333f  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -63,7 +63,7 @@ Disassembly of section .text:
   60:	10 e0       	ldi	r17, 0x00	; 0
   62:	a0 e6       	ldi	r26, 0x60	; 96
   64:	b0 e0       	ldi	r27, 0x00	; 0
-  66:	ea ee       	ldi	r30, 0xEA	; 234
+  66:	ec ef       	ldi	r30, 0xFC	; 252
   68:	f8 e0       	ldi	r31, 0x08	; 8
   6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
   6c:	05 90       	lpm	r0, Z+
@@ -86,7 +86,7 @@ Disassembly of section .text:
   82:	b1 07       	cpc	r27, r17
   84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
   86:	0e 94 c4 03 	call	0x788	; 0x788 <main>
-  8a:	0c 94 73 04 	jmp	0x8e6	; 0x8e6 <_exit>
+  8a:	0c 94 7c 04 	jmp	0x8f8	; 0x8f8 <_exit>
 
 0000008e <__bad_interrupt>:
   8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -1266,7 +1266,7 @@ void LCD_writeInt(sint32 num)
  6dc:	b8 01       	movw	r22, r16
  6de:	a3 01       	movw	r20, r6
  6e0:	92 01       	movw	r18, r4
- 6e2:	0e 94 36 04 	call	0x86c	; 0x86c <__divmodsi4>
+ 6e2:	0e 94 3f 04 	call	0x87e	; 0x87e <__divmodsi4>
  6e6:	89 01       	movw	r16, r18
  6e8:	9a 01       	movw	r18, r20
 	}
@@ -1338,7 +1338,7 @@ void LCD_writeInt(sint32 num)
  726:	b6 01       	movw	r22, r12
  728:	a5 01       	movw	r20, r10
  72a:	94 01       	movw	r18, r8
- 72c:	0e 94 36 04 	call	0x86c	; 0x86c <__divmodsi4>
+ 72c:	0e 94 3f 04 	call	0x87e	; 0x87e <__divmodsi4>
  730:	60 5d       	subi	r22, 0xD0	; 208
  732:	f8 01       	movw	r30, r16
  734:	60 83       	st	Z, r22
@@ -1407,331 +1407,341 @@ int main(void)
 	LCD_init();
  788:	0e 94 cd 02 	call	0x59a	; 0x59a <LCD_init>
 	UART_init();
- 78c:	0e 94 03 04 	call	0x806	; 0x806 <UART_init>
+ 78c:	0e 94 0c 04 	call	0x818	; 0x818 <UART_init>
 	SPI_init();
- 790:	0e 94 d5 03 	call	0x7aa	; 0x7aa <SPI_init>
+ 790:	0e 94 de 03 	call	0x7bc	; 0x7bc <SPI_init>
 	SPI_masterStartTransmission();
- 794:	0e 94 f7 03 	call	0x7ee	; 0x7ee <SPI_masterStartTransmission>
+ 794:	0e 94 00 04 	call	0x800	; 0x800 <SPI_masterStartTransmission>
+ 798:	8f ef       	ldi	r24, 0xFF	; 255
+ 79a:	93 ed       	ldi	r25, 0xD3	; 211
+ 79c:	a0 e3       	ldi	r26, 0x30	; 48
+ 79e:	81 50       	subi	r24, 0x01	; 1
+ 7a0:	90 40       	sbci	r25, 0x00	; 0
+ 7a2:	a0 40       	sbci	r26, 0x00	; 0
+ 7a4:	e1 f7       	brne	.-8      	; 0x79e <main+0x16>
+ 7a6:	00 c0       	rjmp	.+0      	; 0x7a8 <main+0x20>
+ 7a8:	00 00       	nop
+	_delay_ms(1000);
 	uint8 data;
 	
     while(1)
     {
 		data = UART_Rx();
- 798:	0e 94 17 04 	call	0x82e	; 0x82e <UART_Rx>
- 79c:	c8 2f       	mov	r28, r24
+ 7aa:	0e 94 20 04 	call	0x840	; 0x840 <UART_Rx>
+ 7ae:	c8 2f       	mov	r28, r24
 		LCD_writeChar(data);
- 79e:	0e 94 6e 02 	call	0x4dc	; 0x4dc <LCD_writeChar>
+ 7b0:	0e 94 6e 02 	call	0x4dc	; 0x4dc <LCD_writeChar>
 		SPI_Transiver(data);
- 7a2:	8c 2f       	mov	r24, r28
- 7a4:	0e 94 ee 03 	call	0x7dc	; 0x7dc <SPI_Transiver>
- 7a8:	f7 cf       	rjmp	.-18     	; 0x798 <main+0x10>
+ 7b4:	8c 2f       	mov	r24, r28
+ 7b6:	0e 94 f7 03 	call	0x7ee	; 0x7ee <SPI_Transiver>
+ 7ba:	f7 cf       	rjmp	.-18     	; 0x7aa <main+0x22>
 
-000007aa <SPI_init>:
+000007bc <SPI_init>:
 		SET_BIT(SPCR_value, 7);
 	#endif
 	
 	
 	#if  SPI_STATE == SPI_ENABLE && SPI_DEVISE_MODE == SPI_MSTR
 		DIO_setPinDirection(SPI_PORT, SPI_SS_PIN, DIO_PIN_OUTPUT);
- 7aa:	81 e0       	ldi	r24, 0x01	; 1
- 7ac:	64 e0       	ldi	r22, 0x04	; 4
- 7ae:	41 e0       	ldi	r20, 0x01	; 1
- 7b0:	0e 94 9d 00 	call	0x13a	; 0x13a <DIO_setPinDirection>
+ 7bc:	81 e0       	ldi	r24, 0x01	; 1
+ 7be:	64 e0       	ldi	r22, 0x04	; 4
+ 7c0:	41 e0       	ldi	r20, 0x01	; 1
+ 7c2:	0e 94 9d 00 	call	0x13a	; 0x13a <DIO_setPinDirection>
 		DIO_setPinDirection(SPI_PORT, SPI_MOSI_PIN, DIO_PIN_OUTPUT);
- 7b4:	81 e0       	ldi	r24, 0x01	; 1
- 7b6:	65 e0       	ldi	r22, 0x05	; 5
- 7b8:	41 e0       	ldi	r20, 0x01	; 1
- 7ba:	0e 94 9d 00 	call	0x13a	; 0x13a <DIO_setPinDirection>
+ 7c6:	81 e0       	ldi	r24, 0x01	; 1
+ 7c8:	65 e0       	ldi	r22, 0x05	; 5
+ 7ca:	41 e0       	ldi	r20, 0x01	; 1
+ 7cc:	0e 94 9d 00 	call	0x13a	; 0x13a <DIO_setPinDirection>
 		DIO_setPinDirection(SPI_PORT, SPI_MISO_PIN, DIO_PIN_INPUT);
- 7be:	81 e0       	ldi	r24, 0x01	; 1
- 7c0:	66 e0       	ldi	r22, 0x06	; 6
- 7c2:	40 e0       	ldi	r20, 0x00	; 0
- 7c4:	0e 94 9d 00 	call	0x13a	; 0x13a <DIO_setPinDirection>
+ 7d0:	81 e0       	ldi	r24, 0x01	; 1
+ 7d2:	66 e0       	ldi	r22, 0x06	; 6
+ 7d4:	40 e0       	ldi	r20, 0x00	; 0
+ 7d6:	0e 94 9d 00 	call	0x13a	; 0x13a <DIO_setPinDirection>
 		DIO_setPinDirection(SPI_PORT, SPI_CLK_PIN, DIO_PIN_OUTPUT);
- 7c8:	81 e0       	ldi	r24, 0x01	; 1
- 7ca:	67 e0       	ldi	r22, 0x07	; 7
- 7cc:	41 e0       	ldi	r20, 0x01	; 1
- 7ce:	0e 94 9d 00 	call	0x13a	; 0x13a <DIO_setPinDirection>
+ 7da:	81 e0       	ldi	r24, 0x01	; 1
+ 7dc:	67 e0       	ldi	r22, 0x07	; 7
+ 7de:	41 e0       	ldi	r20, 0x01	; 1
+ 7e0:	0e 94 9d 00 	call	0x13a	; 0x13a <DIO_setPinDirection>
 		SET_BIT(SPCR_value, 1);
 		SPI->SPSR = 0xC1;
 	#elif SPI_DEVISE_MODE == SPI_MSTR && SPI_CLK_PRESCALER == SPI_CLK_PRESCALER_128
 		SET_BIT(SPCR_value, 0);
 		SET_BIT(SPCR_value, 1);
 		SPI->SPSR = 0xC0;
- 7d2:	80 ec       	ldi	r24, 0xC0	; 192
- 7d4:	8e b9       	out	0x0e, r24	; 14
+ 7e4:	80 ec       	ldi	r24, 0xC0	; 192
+ 7e6:	8e b9       	out	0x0e, r24	; 14
 	
 	#if   SPI_CLK_PHASE_MODE == SPI_CLK_PHASE_HIGH
 		SET_BIT(SPCR_value, 2);
 	#endif
 	
 	SPI->SPCR = SPCR_value;
- 7d6:	83 e7       	ldi	r24, 0x73	; 115
- 7d8:	8d b9       	out	0x0d, r24	; 13
+ 7e8:	83 e7       	ldi	r24, 0x73	; 115
+ 7ea:	8d b9       	out	0x0d, r24	; 13
 }
- 7da:	08 95       	ret
+ 7ec:	08 95       	ret
 
-000007dc <SPI_Transiver>:
+000007ee <SPI_Transiver>:
 
 uint8 SPI_Transiver(uint8 data)
 {
 	SPI->SPDR = data;
- 7dc:	8f b9       	out	0x0f, r24	; 15
+ 7ee:	8f b9       	out	0x0f, r24	; 15
 	while(GET_BIT(SPI->SPSR, 7) == 0);
- 7de:	77 9b       	sbis	0x0e, 7	; 14
- 7e0:	fe cf       	rjmp	.-4      	; 0x7de <SPI_Transiver+0x2>
+ 7f0:	77 9b       	sbis	0x0e, 7	; 14
+ 7f2:	fe cf       	rjmp	.-4      	; 0x7f0 <SPI_Transiver+0x2>
 	return SPI->SPDR;
- 7e2:	8f b1       	in	r24, 0x0f	; 15
+ 7f4:	8f b1       	in	r24, 0x0f	; 15
 }
- 7e4:	08 95       	ret
+ 7f6:	08 95       	ret
 
-000007e6 <SPI_RxOnly>:
+000007f8 <SPI_RxOnly>:
 
 uint8 SPI_RxOnly()
 {
 	while(GET_BIT(SPI->SPSR, 7) == 0);
- 7e6:	77 9b       	sbis	0x0e, 7	; 14
- 7e8:	fe cf       	rjmp	.-4      	; 0x7e6 <SPI_RxOnly>
+ 7f8:	77 9b       	sbis	0x0e, 7	; 14
+ 7fa:	fe cf       	rjmp	.-4      	; 0x7f8 <SPI_RxOnly>
 	return SPI->SPDR;
- 7ea:	8f b1       	in	r24, 0x0f	; 15
+ 7fc:	8f b1       	in	r24, 0x0f	; 15
 }
- 7ec:	08 95       	ret
+ 7fe:	08 95       	ret
 
-000007ee <SPI_masterStartTransmission>:
+00000800 <SPI_masterStartTransmission>:
 
 #if  SPI_DEVISE_MODE == SPI_MSTR
 void SPI_masterStartTransmission()
 {
 	DIO_setPinValue(SPI_PORT, SPI_SS_PIN, DIO_PIN_LOW);
- 7ee:	81 e0       	ldi	r24, 0x01	; 1
- 7f0:	64 e0       	ldi	r22, 0x04	; 4
- 7f2:	40 e0       	ldi	r20, 0x00	; 0
- 7f4:	0e 94 26 01 	call	0x24c	; 0x24c <DIO_setPinValue>
+ 800:	81 e0       	ldi	r24, 0x01	; 1
+ 802:	64 e0       	ldi	r22, 0x04	; 4
+ 804:	40 e0       	ldi	r20, 0x00	; 0
+ 806:	0e 94 26 01 	call	0x24c	; 0x24c <DIO_setPinValue>
 }
- 7f8:	08 95       	ret
+ 80a:	08 95       	ret
 
-000007fa <SPI_masterEndTransmission>:
+0000080c <SPI_masterEndTransmission>:
 
 void SPI_masterEndTransmission()
 {
 	DIO_setPinValue(SPI_PORT, SPI_SS_PIN, DIO_PIN_HIGH);
- 7fa:	81 e0       	ldi	r24, 0x01	; 1
- 7fc:	64 e0       	ldi	r22, 0x04	; 4
- 7fe:	41 e0       	ldi	r20, 0x01	; 1
- 800:	0e 94 26 01 	call	0x24c	; 0x24c <DIO_setPinValue>
+ 80c:	81 e0       	ldi	r24, 0x01	; 1
+ 80e:	64 e0       	ldi	r22, 0x04	; 4
+ 810:	41 e0       	ldi	r20, 0x01	; 1
+ 812:	0e 94 26 01 	call	0x24c	; 0x24c <DIO_setPinValue>
 }
- 804:	08 95       	ret
+ 816:	08 95       	ret
 
-00000806 <UART_init>:
+00000818 <UART_init>:
 #include "UART.h"
 
 void UART_init()
 {
 	uint32 buadRate = F_OSC / (16*BUAD_RATE) - 1;
 	UBRRL = buadRate;
- 806:	83 e3       	ldi	r24, 0x33	; 51
- 808:	89 b9       	out	0x09, r24	; 9
+ 818:	83 e3       	ldi	r24, 0x33	; 51
+ 81a:	89 b9       	out	0x09, r24	; 9
 	UBRRH = buadRate>>8;
- 80a:	10 bc       	out	0x20, r1	; 32
+ 81c:	10 bc       	out	0x20, r1	; 32
 	
 	
 	#if  RX_STATE == RX_ENABLE
 		DIO_setPinDirection(UART_PORT, UART_RX_PIN, DIO_PIN_INPUT);
- 80c:	83 e0       	ldi	r24, 0x03	; 3
- 80e:	60 e0       	ldi	r22, 0x00	; 0
- 810:	40 e0       	ldi	r20, 0x00	; 0
- 812:	0e 94 9d 00 	call	0x13a	; 0x13a <DIO_setPinDirection>
+ 81e:	83 e0       	ldi	r24, 0x03	; 3
+ 820:	60 e0       	ldi	r22, 0x00	; 0
+ 822:	40 e0       	ldi	r20, 0x00	; 0
+ 824:	0e 94 9d 00 	call	0x13a	; 0x13a <DIO_setPinDirection>
 		SET_BIT(UCSRB, 4);
- 816:	54 9a       	sbi	0x0a, 4	; 10
+ 828:	54 9a       	sbi	0x0a, 4	; 10
 	#elif RX_STATE == RX_DISABLE
 		CLR_BIT(UCSRB, 4);
 	#endif
 	
 	#if  TX_STATE == TX_ENABLE
 		DIO_setPinDirection(UART_PORT, UART_TX_PIN, DIO_PIN_OUTPUT);
- 818:	83 e0       	ldi	r24, 0x03	; 3
- 81a:	61 e0       	ldi	r22, 0x01	; 1
- 81c:	41 e0       	ldi	r20, 0x01	; 1
- 81e:	0e 94 9d 00 	call	0x13a	; 0x13a <DIO_setPinDirection>
+ 82a:	83 e0       	ldi	r24, 0x03	; 3
+ 82c:	61 e0       	ldi	r22, 0x01	; 1
+ 82e:	41 e0       	ldi	r20, 0x01	; 1
+ 830:	0e 94 9d 00 	call	0x13a	; 0x13a <DIO_setPinDirection>
 		SET_BIT(UCSRB, 3);
- 822:	53 9a       	sbi	0x0a, 3	; 10
+ 834:	53 9a       	sbi	0x0a, 3	; 10
 	
 	
 	#if  RX_INTERRUPT_STATE == RX_INTERRUPT_ENABLE
 		SET_BIT(UCSRB, 7);
 	#elif RX_INTERRUPT_STATE == RX_INTERRUPT_DISABLE
 		CLR_BIT(UCSRB, 7);
- 824:	57 98       	cbi	0x0a, 7	; 10
+ 836:	57 98       	cbi	0x0a, 7	; 10
 	#endif
 	
 	#if  TX_INTERRUPT_STATE == TX_INTERRUPT_ENABLE
 		SET_BIT(UCSRB, 6);
 	#elif TX_INTERRUPT_STATE == TX_INTERRUPT_DISABLE
 		CLR_BIT(UCSRB, 6);
- 826:	56 98       	cbi	0x0a, 6	; 10
+ 838:	56 98       	cbi	0x0a, 6	; 10
 		SET_BIT(UCSRB, 2);
 		SET_BIT(UCSRC_value, 2);
 		SET_BIT(UCSRC_value, 1);
 	#endif
 	
 	UCSRC = UCSRC_value;
- 828:	86 e8       	ldi	r24, 0x86	; 134
- 82a:	80 bd       	out	0x20, r24	; 32
+ 83a:	86 e8       	ldi	r24, 0x86	; 134
+ 83c:	80 bd       	out	0x20, r24	; 32
 	
 }
- 82c:	08 95       	ret
+ 83e:	08 95       	ret
 
-0000082e <UART_Rx>:
+00000840 <UART_Rx>:
 
 uint8 UART_Rx()
 {
 	while(GET_BIT(UCSRA, 7) == 0);
- 82e:	5f 9b       	sbis	0x0b, 7	; 11
- 830:	fe cf       	rjmp	.-4      	; 0x82e <UART_Rx>
+ 840:	5f 9b       	sbis	0x0b, 7	; 11
+ 842:	fe cf       	rjmp	.-4      	; 0x840 <UART_Rx>
 	return UDR;
- 832:	8c b1       	in	r24, 0x0c	; 12
+ 844:	8c b1       	in	r24, 0x0c	; 12
 }
- 834:	08 95       	ret
+ 846:	08 95       	ret
 
-00000836 <UART_Tx>:
+00000848 <UART_Tx>:
 
 void UART_Tx(uint8 data)
 {
 	UDR = data;
- 836:	8c b9       	out	0x0c, r24	; 12
+ 848:	8c b9       	out	0x0c, r24	; 12
 	while(GET_BIT(UCSRA, 5) == 0);
- 838:	8b b1       	in	r24, 0x0b	; 11
- 83a:	85 ff       	sbrs	r24, 5
- 83c:	fd cf       	rjmp	.-6      	; 0x838 <UART_Tx+0x2>
+ 84a:	8b b1       	in	r24, 0x0b	; 11
+ 84c:	85 ff       	sbrs	r24, 5
+ 84e:	fd cf       	rjmp	.-6      	; 0x84a <UART_Tx+0x2>
 }
- 83e:	08 95       	ret
+ 850:	08 95       	ret
 
-00000840 <UART_TxString>:
+00000852 <UART_TxString>:
 
 void UART_TxString(uint8* str)
 {
- 840:	0f 93       	push	r16
- 842:	1f 93       	push	r17
- 844:	cf 93       	push	r28
- 846:	8c 01       	movw	r16, r24
+ 852:	0f 93       	push	r16
+ 854:	1f 93       	push	r17
+ 856:	cf 93       	push	r28
+ 858:	8c 01       	movw	r16, r24
 	uint8 i=0;
 	while(str[i] != 0) 
- 848:	fc 01       	movw	r30, r24
- 84a:	80 81       	ld	r24, Z
- 84c:	88 23       	and	r24, r24
- 84e:	51 f0       	breq	.+20     	; 0x864 <__stack+0x5>
+ 85a:	fc 01       	movw	r30, r24
+ 85c:	80 81       	ld	r24, Z
+ 85e:	88 23       	and	r24, r24
+ 860:	51 f0       	breq	.+20     	; 0x876 <__stack+0x17>
 	while(GET_BIT(UCSRA, 5) == 0);
 }
 
 void UART_TxString(uint8* str)
 {
 	uint8 i=0;
- 850:	c0 e0       	ldi	r28, 0x00	; 0
+ 862:	c0 e0       	ldi	r28, 0x00	; 0
 	while(str[i] != 0) 
 	{
 		UART_Tx(str[i]);
- 852:	0e 94 1b 04 	call	0x836	; 0x836 <UART_Tx>
+ 864:	0e 94 24 04 	call	0x848	; 0x848 <UART_Tx>
 		i++;
- 856:	cf 5f       	subi	r28, 0xFF	; 255
+ 868:	cf 5f       	subi	r28, 0xFF	; 255
 }
 
 void UART_TxString(uint8* str)
 {
 	uint8 i=0;
 	while(str[i] != 0) 
- 858:	f8 01       	movw	r30, r16
- 85a:	ec 0f       	add	r30, r28
- 85c:	f1 1d       	adc	r31, r1
- 85e:	80 81       	ld	r24, Z
- 860:	88 23       	and	r24, r24
- 862:	b9 f7       	brne	.-18     	; 0x852 <UART_TxString+0x12>
+ 86a:	f8 01       	movw	r30, r16
+ 86c:	ec 0f       	add	r30, r28
+ 86e:	f1 1d       	adc	r31, r1
+ 870:	80 81       	ld	r24, Z
+ 872:	88 23       	and	r24, r24
+ 874:	b9 f7       	brne	.-18     	; 0x864 <__stack+0x5>
 	{
 		UART_Tx(str[i]);
 		i++;
 	}
 }
- 864:	cf 91       	pop	r28
- 866:	1f 91       	pop	r17
- 868:	0f 91       	pop	r16
- 86a:	08 95       	ret
+ 876:	cf 91       	pop	r28
+ 878:	1f 91       	pop	r17
+ 87a:	0f 91       	pop	r16
+ 87c:	08 95       	ret
 
-0000086c <__divmodsi4>:
- 86c:	97 fb       	bst	r25, 7
- 86e:	09 2e       	mov	r0, r25
- 870:	05 26       	eor	r0, r21
- 872:	0e d0       	rcall	.+28     	; 0x890 <__divmodsi4_neg1>
- 874:	57 fd       	sbrc	r21, 7
- 876:	04 d0       	rcall	.+8      	; 0x880 <__divmodsi4_neg2>
- 878:	14 d0       	rcall	.+40     	; 0x8a2 <__udivmodsi4>
- 87a:	0a d0       	rcall	.+20     	; 0x890 <__divmodsi4_neg1>
- 87c:	00 1c       	adc	r0, r0
- 87e:	38 f4       	brcc	.+14     	; 0x88e <__divmodsi4_exit>
+0000087e <__divmodsi4>:
+ 87e:	97 fb       	bst	r25, 7
+ 880:	09 2e       	mov	r0, r25
+ 882:	05 26       	eor	r0, r21
+ 884:	0e d0       	rcall	.+28     	; 0x8a2 <__divmodsi4_neg1>
+ 886:	57 fd       	sbrc	r21, 7
+ 888:	04 d0       	rcall	.+8      	; 0x892 <__divmodsi4_neg2>
+ 88a:	14 d0       	rcall	.+40     	; 0x8b4 <__udivmodsi4>
+ 88c:	0a d0       	rcall	.+20     	; 0x8a2 <__divmodsi4_neg1>
+ 88e:	00 1c       	adc	r0, r0
+ 890:	38 f4       	brcc	.+14     	; 0x8a0 <__divmodsi4_exit>
 
-00000880 <__divmodsi4_neg2>:
- 880:	50 95       	com	r21
- 882:	40 95       	com	r20
- 884:	30 95       	com	r19
- 886:	21 95       	neg	r18
- 888:	3f 4f       	sbci	r19, 0xFF	; 255
- 88a:	4f 4f       	sbci	r20, 0xFF	; 255
- 88c:	5f 4f       	sbci	r21, 0xFF	; 255
+00000892 <__divmodsi4_neg2>:
+ 892:	50 95       	com	r21
+ 894:	40 95       	com	r20
+ 896:	30 95       	com	r19
+ 898:	21 95       	neg	r18
+ 89a:	3f 4f       	sbci	r19, 0xFF	; 255
+ 89c:	4f 4f       	sbci	r20, 0xFF	; 255
+ 89e:	5f 4f       	sbci	r21, 0xFF	; 255
 
-0000088e <__divmodsi4_exit>:
- 88e:	08 95       	ret
-
-00000890 <__divmodsi4_neg1>:
- 890:	f6 f7       	brtc	.-4      	; 0x88e <__divmodsi4_exit>
- 892:	90 95       	com	r25
- 894:	80 95       	com	r24
- 896:	70 95       	com	r23
- 898:	61 95       	neg	r22
- 89a:	7f 4f       	sbci	r23, 0xFF	; 255
- 89c:	8f 4f       	sbci	r24, 0xFF	; 255
- 89e:	9f 4f       	sbci	r25, 0xFF	; 255
+000008a0 <__divmodsi4_exit>:
  8a0:	08 95       	ret
 
-000008a2 <__udivmodsi4>:
- 8a2:	a1 e2       	ldi	r26, 0x21	; 33
- 8a4:	1a 2e       	mov	r1, r26
- 8a6:	aa 1b       	sub	r26, r26
- 8a8:	bb 1b       	sub	r27, r27
- 8aa:	fd 01       	movw	r30, r26
- 8ac:	0d c0       	rjmp	.+26     	; 0x8c8 <__udivmodsi4_ep>
+000008a2 <__divmodsi4_neg1>:
+ 8a2:	f6 f7       	brtc	.-4      	; 0x8a0 <__divmodsi4_exit>
+ 8a4:	90 95       	com	r25
+ 8a6:	80 95       	com	r24
+ 8a8:	70 95       	com	r23
+ 8aa:	61 95       	neg	r22
+ 8ac:	7f 4f       	sbci	r23, 0xFF	; 255
+ 8ae:	8f 4f       	sbci	r24, 0xFF	; 255
+ 8b0:	9f 4f       	sbci	r25, 0xFF	; 255
+ 8b2:	08 95       	ret
 
-000008ae <__udivmodsi4_loop>:
- 8ae:	aa 1f       	adc	r26, r26
- 8b0:	bb 1f       	adc	r27, r27
- 8b2:	ee 1f       	adc	r30, r30
- 8b4:	ff 1f       	adc	r31, r31
- 8b6:	a2 17       	cp	r26, r18
- 8b8:	b3 07       	cpc	r27, r19
- 8ba:	e4 07       	cpc	r30, r20
- 8bc:	f5 07       	cpc	r31, r21
- 8be:	20 f0       	brcs	.+8      	; 0x8c8 <__udivmodsi4_ep>
- 8c0:	a2 1b       	sub	r26, r18
- 8c2:	b3 0b       	sbc	r27, r19
- 8c4:	e4 0b       	sbc	r30, r20
- 8c6:	f5 0b       	sbc	r31, r21
+000008b4 <__udivmodsi4>:
+ 8b4:	a1 e2       	ldi	r26, 0x21	; 33
+ 8b6:	1a 2e       	mov	r1, r26
+ 8b8:	aa 1b       	sub	r26, r26
+ 8ba:	bb 1b       	sub	r27, r27
+ 8bc:	fd 01       	movw	r30, r26
+ 8be:	0d c0       	rjmp	.+26     	; 0x8da <__udivmodsi4_ep>
 
-000008c8 <__udivmodsi4_ep>:
- 8c8:	66 1f       	adc	r22, r22
- 8ca:	77 1f       	adc	r23, r23
- 8cc:	88 1f       	adc	r24, r24
- 8ce:	99 1f       	adc	r25, r25
- 8d0:	1a 94       	dec	r1
- 8d2:	69 f7       	brne	.-38     	; 0x8ae <__udivmodsi4_loop>
- 8d4:	60 95       	com	r22
- 8d6:	70 95       	com	r23
- 8d8:	80 95       	com	r24
- 8da:	90 95       	com	r25
- 8dc:	9b 01       	movw	r18, r22
- 8de:	ac 01       	movw	r20, r24
- 8e0:	bd 01       	movw	r22, r26
- 8e2:	cf 01       	movw	r24, r30
- 8e4:	08 95       	ret
+000008c0 <__udivmodsi4_loop>:
+ 8c0:	aa 1f       	adc	r26, r26
+ 8c2:	bb 1f       	adc	r27, r27
+ 8c4:	ee 1f       	adc	r30, r30
+ 8c6:	ff 1f       	adc	r31, r31
+ 8c8:	a2 17       	cp	r26, r18
+ 8ca:	b3 07       	cpc	r27, r19
+ 8cc:	e4 07       	cpc	r30, r20
+ 8ce:	f5 07       	cpc	r31, r21
+ 8d0:	20 f0       	brcs	.+8      	; 0x8da <__udivmodsi4_ep>
+ 8d2:	a2 1b       	sub	r26, r18
+ 8d4:	b3 0b       	sbc	r27, r19
+ 8d6:	e4 0b       	sbc	r30, r20
+ 8d8:	f5 0b       	sbc	r31, r21
 
-000008e6 <_exit>:
- 8e6:	f8 94       	cli
+000008da <__udivmodsi4_ep>:
+ 8da:	66 1f       	adc	r22, r22
+ 8dc:	77 1f       	adc	r23, r23
+ 8de:	88 1f       	adc	r24, r24
+ 8e0:	99 1f       	adc	r25, r25
+ 8e2:	1a 94       	dec	r1
+ 8e4:	69 f7       	brne	.-38     	; 0x8c0 <__udivmodsi4_loop>
+ 8e6:	60 95       	com	r22
+ 8e8:	70 95       	com	r23
+ 8ea:	80 95       	com	r24
+ 8ec:	90 95       	com	r25
+ 8ee:	9b 01       	movw	r18, r22
+ 8f0:	ac 01       	movw	r20, r24
+ 8f2:	bd 01       	movw	r22, r26
+ 8f4:	cf 01       	movw	r24, r30
+ 8f6:	08 95       	ret
 
-000008e8 <__stop_program>:
- 8e8:	ff cf       	rjmp	.-2      	; 0x8e8 <__stop_program>
+000008f8 <_exit>:
+ 8f8:	f8 94       	cli
+
+000008fa <__stop_program>:
+ 8fa:	ff cf       	rjmp	.-2      	; 0x8fa <__stop_program>
