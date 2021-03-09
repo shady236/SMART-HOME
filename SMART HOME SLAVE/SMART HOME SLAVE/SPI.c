@@ -86,6 +86,25 @@ uint8 SPI_RxOnly()
 	return SPI->SPDR;
 }
 
+uint8 SPI_RxOnlyIfAvailableNow(uint8 *data)
+{
+	/**
+		function task is
+		1. if there is new data received by SPI now, read it and return 1 to indicate data is valid
+		2. if there is no new data received by SPI now, return 0 to indicate data is invalid
+	**/
+	
+	uint8 flag = 0;
+	if(GET_BIT(SPI->SPSR, 7) == 1)
+	{
+		flag = 1;
+		*data = SPI->SPDR;
+	}
+	return flag;
+}
+
+
+
 #if  SPI_DEVISE_MODE == SPI_MSTR
 void SPI_masterStartTransmission()
 {

@@ -43,9 +43,10 @@
 #define SPI_CLK_PIN		DIO_PIN7
 
 
-void SPI_init();
+void  SPI_init();
 uint8 SPI_Transiver(uint8 data);
 uint8 SPI_RxOnly();
+uint8 SPI_RxOnlyIfAvailableNow(uint8 *data);
 
 #if  SPI_DEVISE_MODE == SPI_MSTR
 void SPI_masterStartTransmission();

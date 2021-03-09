@@ -36,7 +36,6 @@ SUBDIRS :=
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../DIO.c \
-../LCD.c \
 ../main.c \
 ../SPI.c \
 ../UART.c
@@ -50,7 +49,6 @@ ASM_SRCS +=
 
 OBJS +=  \
 DIO.o \
-LCD.o \
 main.o \
 SPI.o \
 UART.o
@@ -58,7 +56,6 @@ UART.o
 
 OBJS_AS_ARGS +=  \
 DIO.o \
-LCD.o \
 main.o \
 SPI.o \
 UART.o
@@ -66,7 +63,6 @@ UART.o
 
 C_DEPS +=  \
 DIO.d \
-LCD.d \
 main.d \
 SPI.d \
 UART.d
@@ -74,7 +70,6 @@ UART.d
 
 C_DEPS_AS_ARGS +=  \
 DIO.d \
-LCD.d \
 main.d \
 SPI.d \
 UART.d
@@ -90,12 +85,6 @@ OUTPUT_FILE_DEP:= ./makedep.mk
 
 # AVR32/GNU C Compiler
 ./DIO.o: .././DIO.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : (AVR_8_bit_GNU_Toolchain_3.4.1_830) 4.6.2
-	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.1.95\AVRToolchain\bin\avr-gcc.exe$(QUOTE) -funsigned-char -funsigned-bitfields -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"  -mmcu=atmega32   -o"$@" "$<" 
-	@echo Finished building: $<
-
-./LCD.o: .././LCD.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : (AVR_8_bit_GNU_Toolchain_3.4.1_830) 4.6.2
 	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.1.95\AVRToolchain\bin\avr-gcc.exe$(QUOTE) -funsigned-char -funsigned-bitfields -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"  -mmcu=atmega32   -o"$@" "$<" 

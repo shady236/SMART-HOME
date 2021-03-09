@@ -4,8 +4,6 @@
 
 DIO.c
 
-LCD.c
-
 main.c
 
 SPI.c

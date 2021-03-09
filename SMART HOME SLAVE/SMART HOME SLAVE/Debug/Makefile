@@ -40,7 +40,8 @@ C_SRCS +=  \
 ../LED1.c \
 ../LED2.c \
 ../main.c \
-../SPI.c
+../SPI.c \
+../Timer0.c
 
 
 PREPROCESSING_SRCS += 
@@ -55,7 +56,8 @@ LCD.o \
 LED1.o \
 LED2.o \
 main.o \
-SPI.o
+SPI.o \
+Timer0.o
 
 
 OBJS_AS_ARGS +=  \
@@ -64,7 +66,8 @@ LCD.o \
 LED1.o \
 LED2.o \
 main.o \
-SPI.o
+SPI.o \
+Timer0.o
 
 
 C_DEPS +=  \
@@ -73,7 +76,8 @@ LCD.d \
 LED1.d \
 LED2.d \
 main.d \
-SPI.d
+SPI.d \
+Timer0.d
 
 
 C_DEPS_AS_ARGS +=  \
@@ -82,7 +86,8 @@ LCD.d \
 LED1.d \
 LED2.d \
 main.d \
-SPI.d
+SPI.d \
+Timer0.d
 
 
 OUTPUT_FILE_PATH +=SMART\ HOME\ SLAVE.elf
@@ -125,6 +130,12 @@ OUTPUT_FILE_DEP:= ./makedep.mk
 	@echo Finished building: $<
 
 ./SPI.o: .././SPI.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : (AVR_8_bit_GNU_Toolchain_3.4.1_830) 4.6.2
+	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.1.95\AVRToolchain\bin\avr-gcc.exe$(QUOTE) -funsigned-char -funsigned-bitfields -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"  -mmcu=atmega32   -o"$@" "$<" 
+	@echo Finished building: $<
+
+./Timer0.o: .././Timer0.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : (AVR_8_bit_GNU_Toolchain_3.4.1_830) 4.6.2
 	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Studio 6.0\extensions\Atmel\AVRGCC\3.4.1.95\AVRToolchain\bin\avr-gcc.exe$(QUOTE) -funsigned-char -funsigned-bitfields -O1 -fpack-struct -fshort-enums -g2 -Wall -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"  -mmcu=atmega32   -o"$@" "$<" 

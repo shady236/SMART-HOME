@@ -79,15 +79,6 @@
     <Compile Include="DIO.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="LCD.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="LCD.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="LCD_confg.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
